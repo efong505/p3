@@ -1,8 +1,10 @@
 {% extends 'learning_logs/base.html' %}
-
+{% block page_header %}
+<h2><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></h2>
+{% endblock page_header %}
 {% block content %}
 
-<h2><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></h2>
+
 
 <h4>Edit entry:</h4>
 
