@@ -1,0 +1,32 @@
+{% extends 'learning_logs/base.html' %}
+{% load bootstrap4 %}
+{% block page_header %}
+<h2>Are You Sure You Want to Delete {{ entry }}???</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'learning_logs:delete_entry' entry.id  %}" method='post'>
+    {% csrf_token %}
+    
+    {% buttons %}
+    <button class="btn btn-primary" name="submit">Delete</button>
+    {% endbuttons %}
+</form>
+
+
+{% comment %} <form action="{% url 'learning_logs:delete_entry' entry.id  %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Delete</button>
+</form> {% endcomment %}
+
+{% comment %} <form action="{% url 'learning_logs:delete_entry' entry.id %}" class="form" method='post'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <p>Are you sure you want to delete?</p>
+    {% buttons %}
+    <button name='submit' class="btn btn-danger">Delete</button>
+    {% endbuttons %}
+</form> {% endcomment %}
+{% endblock content %}
