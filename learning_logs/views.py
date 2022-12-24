@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Topic, Entry
-from .forms import TopicForm, EntryForm
+from .models import Topic, Entry, BreakEvenPoint
+from .forms import TopicForm, EntryForm, BreakEvenPointForm
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
@@ -46,6 +46,33 @@ def new_topic(request):
     context = {'form':form}
     return render(request,'learning_logs/new_topic.html', context)
 
+def break_even_point(request):
+    """calculate"""
+    if request.method != 'POST':
+        # No data submitted; create a blank form.
+        form = BreakEvenPointForm()
+    else:
+        form = BreakEvenPointForm(data=request.POST)
+        if form.is_valid():
+            fixed = float(request.POST['fixed_cost'])
+            reg = float(request.POST['reg_price'])
+            disc = float(request.POST['disc_price'])
+            # def cacl(fixed, reg, disc):
+            #     f = fixed
+            #     r = reg
+            #     isc = disc
+                
+            results = round(fixed/(reg - disc),2)
+            # results = f"{calc}"
+            
+            context = {'results':results}
+            return render(request, 'learning_logs/results.html', context)
+    context = {'form':form}
+    return render(request, 'learning_logs/calculate.html', context)
+    
+def results(request):
+    return render(request, 'learning_logs/results.html')
+    
 @login_required
 def new_entry(request,topic_id):
     """Add a new entry for a particular topic."""

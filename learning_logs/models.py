@@ -24,3 +24,21 @@ class Entry(models.Model):
     def __str__(self):
         """Return a string representation of the model."""
         return f"{self.text[:50]}..."
+    
+class BreakEvenPoint(models.Model):
+    """Used to calculate break even point"""
+    fixed_cost = models.DecimalField(decimal_places=2, max_digits=250)
+    reg_price = models.DecimalField(decimal_places=2, max_digits=250)
+    disc_price = models.DecimalField(decimal_places=2, max_digits=250)
+    
+    def calculate(self, fixed, reg, disc):
+        """ Calculate the Break Even Point """
+        
+        break_even_point = self.fixed_cost/(self.reg_price - self.disc_price)
+        return  break_even_point#self.fixed_cost/(self.reg_price - self.disc_price)
+    
+    def __str__(self):
+        """Return string representation of model"""            
+        return self.fixed_cost
+    
+    

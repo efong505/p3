@@ -24,4 +24,8 @@ urlpatterns=[
     
     # Page for deleting entry
     path('delete_entry/<int:entry_id>/',views.delete_entry, name='delete_entry'),
+    
+    # Results for calculation
+    path('break_even/', views.break_even_point, name='break_even'),
+    
 ]
