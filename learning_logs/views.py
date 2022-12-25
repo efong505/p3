@@ -57,15 +57,12 @@ def break_even_point(request):
             fixed = float(request.POST['fixed_cost'])
             reg = float(request.POST['reg_price'])
             disc = float(request.POST['disc_price'])
-            # def cacl(fixed, reg, disc):
-            #     f = fixed
-            #     r = reg
-            #     isc = disc
-                
-            results = round(fixed/(reg - disc),2)
+                            
+            # results = f"{round(fixed/(reg - disc),3):,}"
+            results = f"{fixed/(reg - disc):,.2f}"
             # results = f"{calc}"
             
-            context = {'results':results}
+            context = {'results':results, 'reg':reg, 'disc':disc}
             return render(request, 'learning_logs/results.html', context)
     context = {'form':form}
     return render(request, 'learning_logs/calculate.html', context)
