@@ -61,14 +61,15 @@ def break_even_point(request):
             # results = f"{round(fixed/(reg - disc),3):,}"
             results = f"{fixed/(reg - disc):,.2f}"
             # results = f"{calc}"
-            
-            context = {'results':results, 'reg':reg, 'disc':disc}
-            return render(request, 'learning_logs/results.html', context)
+            r = f"{reg:.2f}"
+            d = f"{disc:.2f}"
+            context = {'results':results, 'reg':r, 'disc':disc}
+            return render(request, 'calculators/be_results.html', context)
     context = {'form':form}
-    return render(request, 'learning_logs/calculate.html', context)
+    return render(request, 'calculators/be_calculate.html', context)
     
-def results(request):
-    return render(request, 'learning_logs/results.html')
+def calculator(request):
+    return render(request, 'calculators/calculator.html')
     
 @login_required
 def new_entry(request,topic_id):

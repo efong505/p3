@@ -1,8 +1,8 @@
 {% extends 'learning_logs/base.html' %}
 {% block page_header %}<h1>Results</h1>{% endblock page_header %}
 {% block content %}
-<h3>The regular cost is: {{ reg }}<br />
-    The discounted cost is: {{ disc }}
+<h3>Regular cost: {{ reg }}<br />
+    Discounted cost: {{ disc }}
 </h3>
 <h2>The break-even point is: {{ results }} units.</h2>
 <h5><a href="{% url 'learning_logs:break_even' %}">Try another</a><h5>

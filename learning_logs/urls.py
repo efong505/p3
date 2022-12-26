@@ -26,6 +26,9 @@ urlpatterns=[
     path('delete_entry/<int:entry_id>/',views.delete_entry, name='delete_entry'),
     
     # Results for calculation
-    path('break_even/', views.break_even_point, name='break_even'),
+    path('calculators/break_even/', views.break_even_point, name='break_even'),
+    
+    # Calculator
+    path('calculators/calculator/', views.calculator, name='calculator'),
     
 ]

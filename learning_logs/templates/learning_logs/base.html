@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,8 @@
     <title>Learning Log</title>
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
+    
+    
 </head>
 <body>
 {% include 'learning_logs/navbar.html' %}
@@ -18,6 +21,7 @@
     <div>
         {% block content %}{% endblock content %}
       </div>
-    </main>
+      <script type="text/javascript" src="{% static "js/calc.js" %}"></script>
+</main>
 </body>
 </html>
